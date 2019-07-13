@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<stetic-interface>
+  <configuration>
+    <images-root-path>..</images-root-path>
+    <target-gtk-version>2.12</target-gtk-version>
+  </configuration>
+  <import>
+    <widget-library name="../bin/Debug/wiiuzip.exe" internal="true" />
+  </import>
+  <icon-factory>
+    <icon-set id="wiiuzip">
+      <source>
+        <property name="Image">file:./WiiUZip.ico</property>
+      </source>
+    </icon-set>
+  </icon-factory>
+  <widget class="Gtk.Window" id="Wii_U_Zip.MainWindow" design-size="701 308">
+    <action-group name="Default">
+      <action id="saveAsAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Save As</property>
+        <property name="ShortLabel" translatable="yes">Save As</property>
+        <property name="StockId">gtk-save-as</property>
+        <property name="Visible">False</property>
+        <property name="VisibleHorizontal">False</property>
+        <property name="VisibleVertical">False</property>
+        <property name="VisibleOverflown">False</property>
+        <signal name="Activated" handler="OnSaveAsPressed" />
+      </action>
+      <action id="openAction">
+        <property name="Type">Action</property>
+        <property name="Accelerator">&lt;Primary&gt;o</property>
+        <property name="IsImportant">True</property>
+        <property name="Label" translatable="yes">Open</property>
+        <property name="ShortLabel" translatable="yes">Open</property>
+        <property name="StockId">gtk-open</property>
+        <signal name="Activated" handler="onOpen" />
+      </action>
+      <action id="saveAsAction1">
+        <property name="Type">Action</property>
+        <property name="Accelerator">&lt;Primary&gt;s</property>
+        <property name="Label" translatable="yes">Save As</property>
+        <property name="ShortLabel" translatable="yes">Save As</property>
+        <property name="StockId">gtk-save-as</property>
+      </action>
+      <action id="addAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes" />
+        <property name="StockId">gtk-add</property>
+        <property name="Visible">False</property>
+        <property name="VisibleHorizontal">False</property>
+        <property name="VisibleVertical">False</property>
+        <property name="VisibleOverflown">False</property>
+      </action>
+      <action id="removeAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes" />
+        <property name="StockId">gtk-remove</property>
+        <property name="Visible">False</property>
+        <property name="VisibleHorizontal">False</property>
+        <property name="VisibleVertical">False</property>
+        <property name="VisibleOverflown">False</property>
+      </action>
+      <action id="convertAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Replace</property>
+        <property name="ShortLabel" translatable="yes">Replace</property>
+        <property name="StockId">gtk-convert</property>
+        <property name="Visible">False</property>
+        <property name="VisibleHorizontal">False</property>
+        <property name="VisibleVertical">False</property>
+        <property name="VisibleOverflown">False</property>
+      </action>
+      <action id="endianToggle">
+        <property name="Type">Toggle</property>
+        <property name="Label" translatable="yes">Big Endian</property>
+        <property name="ShortLabel" translatable="yes">Big Endian</property>
+        <property name="DrawAsRadio">False</property>
+        <property name="Active">False</property>
+      </action>
+      <action id="extractAction">
+        <property name="Type">Action</property>
+        <property name="Accelerator">&lt;Primary&gt;e</property>
+        <property name="Label" translatable="yes">Extract</property>
+        <property name="ShortLabel" translatable="yes">Extract</property>
+        <property name="StockId">gtk-dnd</property>
+        <property name="Tooltip" translatable="yes">Extract the selected file</property>
+        <signal name="Activated" handler="onExtractPressed" />
+      </action>
+      <action id="extractAllAction">
+        <property name="Type">Action</property>
+        <property name="Accelerator">&lt;Primary&gt;e</property>
+        <property name="IsImportant">True</property>
+        <property name="Label" translatable="yes">Extract All</property>
+        <property name="ShortLabel" translatable="yes">Extract All</property>
+        <property name="StockId">gtk-dnd-multiple</property>
+        <signal name="Activated" handler="onExtractAllPressed" />
+      </action>
+    </action-group>
+    <property name="MemberName" />
+    <property name="Title" translatable="yes">Wii U Zip</property>
+    <property name="WindowPosition">CenterOnParent</property>
+    <child>
+      <widget class="Gtk.VBox" id="mainVBox">
+        <property name="MemberName" />
+        <property name="Spacing">6</property>
+        <child>
+          <widget class="Gtk.Toolbar" id="toolbar1">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="ShowArrow">False</property>
+            <property name="ButtonStyle">Both</property>
+            <node name="__gtksharp_144_Stetic_Editor_ActionToolbar" type="Toolbar">
+              <node type="Toolitem" action="openAction" />
+              <node type="Toolitem" action="saveAsAction" />
+              <node type="Separator" />
+              <node type="Toolitem" action="extractAction" />
+              <node type="Toolitem" action="extractAllAction" />
+              <node type="Separator" />
+              <node type="Toolitem" action="addAction" />
+              <node type="Toolitem" action="removeAction" />
+              <node type="Toolitem" action="convertAction" />
+              <node type="Separator" />
+              <node type="Toolitem" action="endianToggle" />
+            </node>
+          </widget>
+          <packing>
+            <property name="Position">0</property>
+            <property name="AutoSize">False</property>
+            <property name="Expand">False</property>
+            <property name="Fill">False</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.ScrolledWindow" id="GtkScrolledWindow">
+            <property name="MemberName" />
+            <property name="ShadowType">In</property>
+            <child>
+              <widget class="Gtk.NodeView" id="mainTreeView">
+                <property name="MemberName" />
+                <property name="CanFocus">True</property>
+                <property name="ShowScrollbars">True</property>
+              </widget>
+            </child>
+          </widget>
+          <packing>
+            <property name="Position">1</property>
+            <property name="AutoSize">True</property>
+          </packing>
+        </child>
+      </widget>
+    </child>
+  </widget>
+</stetic-interface>
